@@ -1,0 +1,22 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+# create the block mesh
+runApplication blockMesh
+
+# split into the regions
+runApplication splitMeshRegions -cellZones -overwrite
+
+# set the initial fields
+rm -rf 0
+cp -rf 0.org 0
+
+# run the solver
+runApplication $(getApplication)
+
+# prepare for post-processing (user must open paraview
+# manually and open all .OpenFOAM files file -> open)
+paraFoam -touchAll

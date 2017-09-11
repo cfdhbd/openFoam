@@ -1,0 +1,9 @@
+This is a simple case of TRANSIENT TURBULENT flow around 21 spheres. The solver is simpleFoam and snappyHexMesh is used to generate the mesh. The fluid is water (nu = 1e-6 m2/s), the inlet velocity is 1 m/s, and the sphere diameter is 2 cm, which results in a Reynolds number of approximately 20000.
+
+To execute the case, open a terminal from the case directory and run the Allrun script by typing ./Allrun.
+
+To execute the case in parallel (ONLY IF YOU HAVE 4 CORES AVAILABLE), open a terminal from the case directory and run the Allrunpar script by typing ./Allrunpar.
+
+To post-process the results, open a terminal from the case directory and run paraFoam.
+
+To clear the results, open a terminal from the case directory and run the Allclean script by typing ./Allclean.

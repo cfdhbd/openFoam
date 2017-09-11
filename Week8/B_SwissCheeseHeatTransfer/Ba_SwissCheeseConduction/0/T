@@ -1,0 +1,48 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform 50;
+
+boundaryField
+{
+    "sphereRegion.*"
+    {
+        type            fixedValue;
+        value           uniform 250;
+    }
+
+    left
+    {
+        type            fixedValue;
+        value           uniform 50;
+    }
+
+    right
+    {
+        type            fixedValue;
+        value           uniform 50;
+    }
+
+    outside
+    {
+        type            zeroGradient;
+    }
+
+}
+
+// ************************************************************************* //

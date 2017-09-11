@@ -1,0 +1,7 @@
+This is a simple case of TRANSIENT LAMINAR flow around 21 spheres. The solver is icoFoam and snappyHexMesh is used to generate the mesh. The fluid is water (nu = 1e-6 m2/s), the inlet velocity is 0.1 m/s, and the sphere diameter is 2 cm, which results in a Reynolds number of approximately 2000.
+
+To execute the case, open a terminal from the case directory and run the Allrun script by typing ./Allrun.
+
+To post-process the results, open a terminal from the case directory and run paraFoam.
+
+To clear the results, open a terminal from the case directory and run the Allclean script by typing ./Allclean.

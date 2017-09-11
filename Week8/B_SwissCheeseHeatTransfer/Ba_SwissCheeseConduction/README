@@ -1,0 +1,7 @@
+This is a simple case heat conduction from 21 spheres to a stationary medium. The solver is laplacianFoam and snappyHexMesh is used to generate the mesh. The thermal diffusivity is assumed to be 5e-5 m2/s, which in the correct range for some types of aluminum alloys. The spheres are maintained at 250 C, the initial temperature is 50 C, the left and right sides are maintained at 50 C, and the outer walls are insulated.
+
+To execute the case, open a terminal from the case directory and run the Allrun script by typing ./Allrun.
+
+To post-process the results, open a terminal from the case directory and run paraFoam.
+
+To clear the results, open a terminal from the case directory and run the Allclean script by typing ./Allclean.
