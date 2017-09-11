@@ -1,0 +1,53 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v3.0+                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform 298.15;
+
+boundaryField
+{
+    out
+    {
+        type            zeroGradient;
+    }
+
+    in
+    {
+        type            fixedValue;
+        value           uniform 298.15;
+    }
+
+    walls
+    {
+        type            codedMixed;
+
+        refValue        uniform 373.15;
+        refGradient     uniform 0;
+        valueFraction   uniform 0;
+
+        redirectType    convectiveHeat;
+
+        code
+        #{
+            const fvPatchField& T = this->patch().lookupPatchField<volScalarField, scalar>("T");
+            this->refGrad() = 2000*(this->refValue() - T); // dT/dr = h/k*(T_ref - T_boundary)
+            this->valueFraction() = 0;
+        #};
+    }
+}
+
+// ************************************************************************* //
