@@ -1,0 +1,187 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+castellatedMesh true;
+snap            true;
+addLayers       false;
+
+geometry
+{
+    vessel
+    {
+        type searchableCylinder;
+        point1 (0 0 0);
+        point2 (0 0 1);
+        radius 0.25;
+    }
+
+    mixer
+    {
+        type searchableBox;
+        //origin (0 -0.15 0.1);
+        //span (0 0.3 0.1);
+        min (-0.01 -0.15 0.1);
+        max (0.01 0.15 0.2);
+    }
+
+    rotating
+    {
+        type searchableCylinder;
+        point1 (0 0 0.05);
+        point2 (0 0 0.45);
+        radius 0.2;
+    }
+};
+
+
+castellatedMeshControls
+{
+    maxLocalCells 100000;
+    maxGlobalCells 3000000;
+    minRefinementCells 0;
+    maxLoadUnbalance 0.10;
+    nCellsBetweenLevels 1;
+
+    features
+    (
+
+    );
+
+    refinementSurfaces
+    {
+        vessel
+        {
+            level (1 1);
+            patchInfo
+            {
+                type wall;
+            }
+        }
+
+        mixer
+        {
+            level (1 2);
+            patchInfo
+            {
+                type wall;
+            }
+        }
+
+        rotating
+        {
+            level (1 1);
+            cellZone rotating;
+            faceZone rotating;
+            cellZoneInside insidePoint;
+            insidePoint (0 0 0.4);
+        }
+    }
+
+    resolveFeatureAngle 30;
+
+    refinementRegions
+    {
+        vessel
+	{
+	    mode inside;
+            levels ((1 1));
+	}
+    }
+
+    locationInMesh (0 0.24 0.40001);
+    allowFreeStandingZoneFaces true;
+}
+
+
+snapControls
+{
+    nSmoothPatch 3;
+    tolerance 3.0;
+    nSolveIter 30;
+    nRelaxIter 5;
+        nFeatureSnapIter 15;
+        implicitFeatureSnap true;
+        explicitFeatureSnap false;
+        multiRegionFeatureSnap false;
+}
+
+addLayersControls
+{
+    relativeSizes true;
+        expansionRatio 1.0;
+        finalLayerThickness 0.3;
+
+        //firstLayerThickness 0.3;
+        //thickness 0.5;
+    minThickness 0.25;
+
+    layers
+    {
+        vessel
+        {
+            nSurfaceLayers      1;
+            expansionRatio      1.3;
+            finalLayerThickness 0.5;
+            minThickness        0.1;
+        }
+    }
+
+    nGrow 0;
+    featureAngle 60;
+    slipFeatureAngle 30;
+    nRelaxIter 10;
+    nSmoothSurfaceNormals 1;
+    nSmoothNormals 3;
+    nSmoothThickness 10;
+    maxFaceThicknessRatio 0.5;
+    maxThicknessToMedialRatio 0.3;
+    minMedianAxisAngle 90;
+    nBufferCellsNoExtrude 0;
+    nLayerIter 50;
+    nRelaxedIter 20;
+    //additionalReporting true;
+}
+
+
+meshQualityControls
+{
+    maxNonOrtho 65;
+    maxBoundarySkewness 20;
+    maxInternalSkewness 4;
+    maxConcave 80;
+    minVol 1e-13;
+    minTetQuality 1e-9;
+    minArea -1;
+    minTwist 0.05;
+    minDeterminant 0.001;
+    minFaceWeight 0.05;
+    minVolRatio 0.01;
+    minTriangleTwist -1;
+
+    //minVolCollapseRatio 0.5;
+
+    nSmoothScale 4;
+    errorReduction 0.75;
+
+    relaxed
+    {
+        maxNonOrtho 75;
+    }
+}
+
+mergeTolerance 1e-6;
+
+// ************************************************************************* //

@@ -1,0 +1,213 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+castellatedMesh true;
+snap            true;
+addLayers       false;
+
+geometry
+{
+    cylinder1{type searchableCylinder; point1 (0.2 0.01 0.2); point2 (0.2 0.01 0); radius 0.005;}
+    cylinder2{type searchableCylinder; point1 (0.2 0.03 0.2); point2 (0.2 0.03 0); radius 0.005;}
+    cylinder3{type searchableCylinder; point1 (0.2 0.05 0.2); point2 (0.2 0.05 0); radius 0.005;}
+    cylinder4{type searchableCylinder; point1 (0.2 0.07 0.2); point2 (0.2 0.07 0); radius 0.005;}
+    cylinder5{type searchableCylinder; point1 (0.2 0.09 0.2); point2 (0.2 0.09 0); radius 0.005;}
+    cylinder6{type searchableCylinder; point1 (0.22 0.02 0.2); point2 (0.22 0.02 0); radius 0.005;}
+    cylinder7{type searchableCylinder; point1 (0.22 0.04 0.2); point2 (0.22 0.04 0); radius 0.005;}
+    cylinder8{type searchableCylinder; point1 (0.22 0.06 0.2); point2 (0.22 0.06 0); radius 0.005;}
+    cylinder9{type searchableCylinder; point1 (0.22 0.08 0.2); point2 (0.22 0.08 0); radius 0.005;}
+    cylinder10{type searchableCylinder; point1 (0.24 0.01 0.2); point2 (0.24 0.01 0); radius 0.005;}
+    cylinder11{type searchableCylinder; point1 (0.24 0.03 0.2); point2 (0.24 0.03 0); radius 0.005;}
+    cylinder12{type searchableCylinder; point1 (0.24 0.05 0.2); point2 (0.24 0.05 0); radius 0.005;}
+    cylinder13{type searchableCylinder; point1 (0.24 0.07 0.2); point2 (0.24 0.07 0); radius 0.005;}
+    cylinder14{type searchableCylinder; point1 (0.24 0.09 0.2); point2 (0.24 0.09 0); radius 0.005;}
+    cylinder15{type searchableCylinder; point1 (0.26 0.02 0.2); point2 (0.26 0.02 0); radius 0.005;}
+    cylinder16{type searchableCylinder; point1 (0.26 0.04 0.2); point2 (0.26 0.04 0); radius 0.005;}
+    cylinder17{type searchableCylinder; point1 (0.26 0.06 0.2); point2 (0.26 0.06 0); radius 0.005;}
+    cylinder18{type searchableCylinder; point1 (0.26 0.08 0.2); point2 (0.26 0.08 0); radius 0.005;}
+    cylinder19{type searchableCylinder; point1 (0.28 0.01 0.2); point2 (0.28 0.01 0); radius 0.005;}
+    cylinder20{type searchableCylinder; point1 (0.28 0.03 0.2); point2 (0.28 0.03 0); radius 0.005;}
+    cylinder21{type searchableCylinder; point1 (0.28 0.05 0.2); point2 (0.28 0.05 0); radius 0.005;}
+    cylinder22{type searchableCylinder; point1 (0.28 0.07 0.2); point2 (0.28 0.07 0); radius 0.005;}
+    cylinder23{type searchableCylinder; point1 (0.28 0.09 0.2); point2 (0.28 0.09 0); radius 0.005;}
+    cylinder24{type searchableCylinder; point1 (0.30 0.02 0.2); point2 (0.30 0.02 0); radius 0.005;}
+    cylinder25{type searchableCylinder; point1 (0.30 0.04 0.2); point2 (0.30 0.04 0); radius 0.005;}
+    cylinder26{type searchableCylinder; point1 (0.30 0.06 0.2); point2 (0.30 0.06 0); radius 0.005;}
+    cylinder27{type searchableCylinder; point1 (0.30 0.08 0.2); point2 (0.30 0.08 0); radius 0.005;}
+    box{type searchableBox; min (0.16 0 0); max (0.34 0.1 0.2);}
+
+    combCyl
+    {
+        type searchableSurfaceCollection;
+        mergeSubRegions true;
+        partCyl1{surface cylinder1; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl2{surface cylinder2; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl3{surface cylinder3; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl4{surface cylinder4; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl5{surface cylinder5; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl6{surface cylinder6; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl7{surface cylinder7; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl8{surface cylinder8; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl9{surface cylinder9; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl10{surface cylinder10; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl11{surface cylinder11; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl12{surface cylinder12; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl13{surface cylinder13; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl14{surface cylinder14; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl15{surface cylinder15; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl16{surface cylinder16; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl17{surface cylinder17; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl18{surface cylinder18; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl19{surface cylinder19; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl20{surface cylinder20; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl21{surface cylinder21; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl22{surface cylinder22; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl23{surface cylinder23; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl24{surface cylinder24; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl25{surface cylinder25; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl26{surface cylinder26; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+        partCyl27{surface cylinder27; scale (1.0 1.0 1.0); transform{coordinateSystem{type cartesian; origin (0 0 0.0);
+            coordinateRotation{type axesRotation; e1 (1 0 0); e3 (0 0 1);}}}}
+    }
+}
+
+castellatedMeshControls
+{
+    maxLocalCells 100000;
+    maxGlobalCells 2000000;
+    minRefinementCells 100;
+    nCellsBetweenLevels 1;
+    features ();
+
+    refinementSurfaces
+    {
+        combCyl
+        {
+            level (1 1);
+            faceZone fluidB;
+            cellZone fluidB;
+            cellZoneInside inside;
+        }
+    }
+
+    resolveFeatureAngle 60;
+
+    refinementRegions
+    {
+	box
+	{
+	    mode inside;
+            levels ((1 1));
+	}
+	"cylinder.*"
+	{
+	    mode inside;
+            levels ((0 0));
+	}
+    }
+
+    locationInMesh (0.01 0.010001 0.01001);
+
+    allowFreeStandingZoneFaces false;
+}
+
+snapControls
+{
+    nSmoothPatch 3;
+    tolerance 2.0;
+    nSolveIter 30;
+    nRelaxIter 5;
+        nFeatureSnapIter 10;
+        implicitFeatureSnap true;
+        explicitFeatureSnap false;
+}
+
+
+addLayersControls
+{
+    relativeSizes true;
+
+    layers
+    {
+    }
+
+    expansionRatio 1;
+    finalLayerThickness 0.1;
+    minThickness 0.01;
+    nGrow 0;
+    featureAngle 60;
+    nRelaxIter 5;
+    nSmoothSurfaceNormals 1;
+    nSmoothNormals 3;
+    nSmoothThickness 10;
+    maxFaceThicknessRatio 0.01;
+    maxThicknessToMedialRatio 0.01;
+    minMedianAxisAngle 130;
+    nBufferCellsNoExtrude 0;
+    nLayerIter 50;
+}
+
+
+
+// Generic mesh quality settings. At any undoable phase these determine
+// where to undo.
+meshQualityControls
+{
+    #include "meshQualityDict"
+
+    // Advanced
+
+    //- Number of error distribution iterations
+    nSmoothScale 4;
+    //- Amount to scale back displacement at error points
+    errorReduction 0.75;
+}
+
+
+// Advanced
+
+// Merge tolerance. Is fraction of overall bounding box of initial mesh.
+// Note: the write tolerance needs to be higher than this.
+mergeTolerance 1e-6;
+
+
+// ************************************************************************* //
