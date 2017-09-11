@@ -1,0 +1,135 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// NOTE: Dots are vertices (there are 10 per layer)
+//
+//         L1                       L2
+//     .---------.---------.---------------------------.
+//     |                                               |
+//  -->| W1                                         W1 |-->
+//     |                                               |
+//     .---------.         .---------------------------.
+//               |         |
+//               |         |
+//               |         |
+//            L3 |         |
+//               |         |
+//               |         |
+//               |   W2    |
+//     .(0,0,0)  .---------.
+//                    ^
+//                    |
+
+convertToMeters 1;
+
+//Some basic dimensions
+W1 0.005; W2 0.005;
+L1 0.05; L2 0.10; L3 0.025;
+dz 0.005;
+
+//Convert to some dimensions that will make vertex definitions easier to implement
+x0 0;
+x1 $L1;
+x2 #calc "$x1+$W2";
+x3 #calc "$x2+$L2";
+y0 0;
+y1 $L3;
+y2 #calc "$y1+$W1";
+
+vertices
+(
+    ($x1 $y0 0)
+    ($x2 $y0 0)
+    ($x0 $y1 0)
+    ($x1 $y1 0)
+    ($x2 $y1 0)
+    ($x3 $y1 0)
+    ($x0 $y2 0)
+    ($x1 $y2 0)
+    ($x2 $y2 0)
+    ($x3 $y2 0)
+    ($x1 $y0 $dz)
+    ($x2 $y0 $dz)
+    ($x0 $y1 $dz)
+    ($x1 $y1 $dz)
+    ($x2 $y1 $dz)
+    ($x3 $y1 $dz)
+    ($x0 $y2 $dz)
+    ($x1 $y2 $dz)
+    ($x2 $y2 $dz)
+    ($x3 $y2 $dz)
+);
+
+blocks
+(
+    //Left inlet block
+    hex (2 3 7 6 12 13 17 16) (30 12 12) simpleGrading (0.5 2 1)
+
+    //Middle block
+    hex (3 4 8 7 13 14 18 17) (6 12 12) simpleGrading (1 2 1)
+
+    //Right outlet block
+    hex (4 5 9 8 14 15 19 18) (50 12 12) simpleGrading (3 2 1)
+
+    //Bottom inlet block
+    hex (0 1 4 3 10 11 14 13) (6 30 12) simpleGrading (1 0.25 1)
+);
+
+edges
+(
+);
+
+boundary
+(
+    inletLeft
+    {
+        type patch;
+        faces
+        (
+            (2 12 16 6)
+        );
+    }
+
+    inletBottom
+    {
+        type patch;
+        faces
+        (
+            (0 1 11 10)
+        );
+    }
+
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (5 9 19 15)
+        );
+    }
+
+    defaultFaces
+    {
+        type wall;
+        faces ();
+    }
+);
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //
